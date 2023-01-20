@@ -19,6 +19,7 @@ public class Pizza {
         this.isBillgenrated=false;
         this.isBagTakeAway=false;
         this.isExtraCheeseAdded=false;
+        this.bill="";
         if(isVeg){
             this.price=300;
             this.Topping=70;
@@ -28,7 +29,7 @@ public class Pizza {
             this.Topping=120;
         }
         this.Cheese=80;
-        this.bill="Base Price Of The Pizza:"+this.price+"\n";
+        this.bill="Base Price Of The Pizza: "+this.price+"\n";
     }
 
     public int getPrice(){
@@ -38,7 +39,7 @@ public class Pizza {
     public void addExtraCheese(){
         // your code goes here
         if(!isExtraCheeseAdded){
-            this.price+=80;
+            this.price+=Cheese;
             isExtraCheeseAdded=true;
         }
     }
@@ -46,10 +47,7 @@ public class Pizza {
     public void addExtraToppings(){
         // your code goes here
         if(!isExtraToppingsAdded){
-            if(isVeg){
-                this.price+=70;
-            }
-            else this.price+=120;
+              this.price+=Topping;
             isExtraToppingsAdded=true;
         }
     }
@@ -66,12 +64,12 @@ public class Pizza {
         // your code goes here
         if(!isBillgenrated) {
             if(isExtraCheeseAdded)
-                this.bill += "Extra Cheese Added: " + this.Cheese + "\n";
+                this.bill += "Extra Cheese Added: " +this.Cheese+ "\n";
             if(isExtraToppingsAdded)
-                this.bill +="Extra Toppings Added: "+this.Topping+ "\n";
+                this.bill += "Extra Toppings Added: "+this.Topping+ "\n";
             if(isBagTakeAway)
-                this.bill+="Paperbag Added: "+"20"+"\n";
-            this.bill+="Total Price: "+this.price+"\n";
+                this.bill+= "Paperbag Added: "+"20"+"\n";
+            this.bill+= "Total Price: "+this.price+"\n";
             isBillgenrated=true;
         }
         return this.bill;
