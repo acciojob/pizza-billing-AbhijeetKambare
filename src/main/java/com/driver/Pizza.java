@@ -5,10 +5,30 @@ public class Pizza {
     private int price;
     private Boolean isVeg;
     private String bill;
+    private int Cheese;
+    private int Topping;
+    boolean isExtraToppingsAdded;
+    boolean isExtraCheeseAdded;
+    boolean isBagTakeAway;
+    boolean isBillgenrated;
+
 
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
-        // your code goes here
+        this.isBagTakeAway=false;
+        this.isBillgenrated=false;
+        this.isBagTakeAway=false;
+        this.isExtraCheeseAdded=false;
+        if(isVeg){
+            this.price=300;
+            this.Topping=70;
+        }
+        else {
+            this.price=400;
+            this.Topping=120;
+        }
+        this.Cheese=80;
+        this.bill="Base Price Of The Pizza:"+this.price+"\n";
     }
 
     public int getPrice(){
@@ -17,18 +37,43 @@ public class Pizza {
 
     public void addExtraCheese(){
         // your code goes here
+        if(!isExtraCheeseAdded){
+            this.price+=80;
+            isExtraCheeseAdded=true;
+        }
     }
 
     public void addExtraToppings(){
         // your code goes here
+        if(!isExtraToppingsAdded){
+            if(isVeg){
+                this.price+=70;
+            }
+            else this.price+=120;
+            isExtraToppingsAdded=true;
+        }
     }
 
     public void addTakeaway(){
         // your code goes here
+        if(!isBagTakeAway){
+            this.price+=20;
+            isBagTakeAway=true;
+        }
     }
 
     public String getBill(){
         // your code goes here
+        if(!isBillgenrated) {
+            if(isExtraCheeseAdded)
+                this.bill += "Extra Cheese Added: " + this.Cheese + "\n";
+            if(isExtraToppingsAdded)
+                this.bill +="Extra Toppings Added: "+this.Topping+ "\n";
+            if(isBagTakeAway)
+                this.bill+="Paperbag Added: "+"20"+"\n";
+            this.bill+="Total Price: "+this.price+"\n";
+            isBillgenrated=true;
+        }
         return this.bill;
     }
 }
